@@ -10,12 +10,20 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   img: string = '';
 
   // eslint-disable-next-line @angular-eslint/no-input-rename
-  @Input('img')
+  /*@Input('img')
   set changeImg(newImg: string) {
     this.img = newImg;
     console.log('change just img  =>' ,this.img);
     // code
-  }
+  }*/
+
+    @Input('img')
+    set changeImg(newImg: string | undefined) {
+      this.img = newImg ?? '';
+      console.log('change just img =>', this.img);
+    }
+
+
   @Input() alt: string = '';
   @Output() loaded = new EventEmitter<string>();
   imageDefault = './assets/images/default.png';
